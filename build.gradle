@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'studio.ecxx'
-version '1.0.0'
+version '1.0.2'
 
 repositories {
     mavenCentral()
@@ -16,3 +16,18 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+task fatJar(type: Jar) {
+    from {
+        List<File> allFiles = new ArrayList<>();
+        configurations.compile.collect {
+            for (File f : zipTree(it).getFiles()) {
+                if (f.getName().equals("classes.jar")) {
+                    allFiles.addAll(zipTree(f).getAt("asFileTrees").get(0).getDir())
+                }
+            }
+        }
+        allFiles.add(new File('build/intermediates/classes/release'))
+        allFiles // To return the result inside a lambda
+    }
+    archiveName('studio.ecxx.jcordext-fat-1.0.2.jar')
+}
