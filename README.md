@@ -4,10 +4,10 @@ jcordext is a Utility Framework for Java Discord Bots which uses the [Javacord](
 
 As of right now, jcordext is limited in functionality to a Commands framework as well as a Tasks framework, which allows the bot to periodically execute "tasks" in a loop.
 
-##Installation
+## Installation
 We do not support maven/gradle as we have yet to push this project to a repository. However, you can download the <a href="https://github.com/ecxx/jcordext/releases/download/v1.0.2/jcordext-1.0.2.jar">jar<a/> here. Note that Javacord has to be included separately.
 
-##Examples
+## Examples
 
 The following code will create a simple bot with a "ping" command:
 ```java
